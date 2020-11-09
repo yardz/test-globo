@@ -54,7 +54,6 @@ export const SlideFilme: React.FC<Props> = ({ foco, filmes, esquerda }) => {
 			style={{
 				width: '100%',
 				overflow: 'hidden',
-				background: 'red',
 				height: 230,
 				position: 'relative',
 			}}>
