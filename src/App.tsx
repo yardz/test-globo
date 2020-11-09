@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import { Teclado } from './Teclado/Teclado';
+import { Menu } from './Menu/Menu';
+import { Lista } from './Lista/Lista';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [busca, setBusca] = useState('');
+	const [foco, setFoco] = useState('menu');
+
+	return (
+		<div>
+			<Menu
+				foco={foco === 'menu'}
+				direita={() => {
+					setFoco('teclado');
+				}}
+			/>
+			<Teclado
+				busca={busca}
+				foco={foco === 'teclado'}
+				setBusca={setBusca}
+				esquerda={() => {
+					setFoco('menu');
+				}}
+				direita={() => {
+					setFoco('lista');
+				}}
+			/>
+			<Lista
+				busca={busca}
+				expandido={foco !== 'menu'}
+				esquerda={() => {
+					setFoco('teclado');
+				}}
+				foco={foco === 'lista'}
+			/>
+		</div>
+	);
 }
 
 export default App;
