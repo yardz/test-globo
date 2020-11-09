@@ -10,7 +10,7 @@ interface Props {
 export const SlideFilme: React.FC<Props> = ({ foco, filmes, esquerda }) => {
 	const [item, setItem] = useState(0);
 	const nextItem = () => {
-		if (item < filmes.length) {
+		if (item < filmes.length - 1) {
 			setItem(item + 1);
 		}
 	};
